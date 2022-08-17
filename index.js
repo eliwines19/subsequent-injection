@@ -1,6 +1,9 @@
-stringOfNums = "21462675756"
+stringOfNums = "98676555533"
 
 function subsequent(str) {
+
+    // create array where string elements will be pushed once evaluated
+    array = [];
     
     // create a loop that compares the next value in the array to the current value
     for (var i = 0; i < str.length; i++) {
@@ -16,14 +19,22 @@ function subsequent(str) {
         // // if both are odd, insert - between the two elements
         if (!isNaN(next)) {
             if (currentNumStatus == 'even' && nextNumStatus == 'even') {
-                console.log(str.slice(0, i+1) + '*' + str.slice(i+1))
+                // if both even, push current element plus '*'
+                array.push(current.toString(), '*')
             } else if (currentNumStatus == 'odd' && nextNumStatus == 'odd') {
-                console.log(str.slice(0, i+1) + '*' + str.slice(i+1))
+                // if both off, push current element plus '-'
+                array.push(current.toString(), '-')
+            } else {
+                // if they are not the same, just push the current element
+                array.push(current)
             }
+        } else {
+            // even if next number is NaN, push the current element
+            array.push(current)
         }
     }
 
-    return str
+    return array.join("")
 
 }
 
